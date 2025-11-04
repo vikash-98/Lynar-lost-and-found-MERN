@@ -8,7 +8,7 @@ It features secure authentication, image uploads, and a simple, intuitive interf
 ## 🚀 Tech Stack
 
 **Frontend:** React.js, Axios, React Router, TailwindCSS  
-**Backend:** Node.js, Express.js, MongoDB, JWT, Multer  
+**Backend:** Node.js, Express.js, MongoDB, JWT 
 **Database:** MongoDB Atlas  
 **Email Service:** Nodemailer (for password reset)  
 **Hosting:**  
@@ -40,10 +40,7 @@ lost-and-found/
 ├── .gitignore
 └── README.md
 
-yaml
-Copy code
-
----
+----------------------------
 
 ## ⚙️ Backend Setup (Node + Express)
 
@@ -91,7 +88,7 @@ Copy code
 npm start
 App runs on:
 👉 http://localhost:3000
-
+----------------------------------
 🧠 Key Features
 ✅ User Authentication (Signup / Login using JWT)
 ✅ Password Reset via Email (Nodemailer)
@@ -101,60 +98,7 @@ App runs on:
 ✅ Admin/Moderator Access (optional)
 ✅ Fully Responsive Frontend
 
-🔐 Changing College Email Restriction
-If your app restricts signups to VIT college emails, find this line in:
-backend/controllers/authController.js
-
-js
-Copy code
-const emailRegex = /^[a-zA-Z0-9._%+-]+@vitapstudent\.ac\.in$/;
-Change it to:
-
-js
-Copy code
-const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook)\.com$/;
-or simply remove the condition if you want to allow all emails.
-
-☁️ Deployment
-🌍 Deploy Backend on Render
-Go to https://render.com
-
-Create a new Web Service
-
-Connect your GitHub repo
-
-Set Root Directory to backend
-
-Set Build Command: npm install
-
-Set Start Command: node server.js
-
-Add environment variables from your .env file
-
-After deploy, you’ll get a URL like:
-
-arduino
-Copy code
-https://lostfound-backend.onrender.com
-🌐 Deploy Frontend on Vercel
-Go to https://vercel.com
-
-Import the same GitHub repo
-
-Set Root Directory to frontend
-
-Add environment variable:
-
-ini
-Copy code
-REACT_APP_API_URL=https://lostfound-backend.onrender.com
-Deploy
-
-Frontend will be available at:
-
-arduino
-Copy code
-https://lostfound.vercel.app
+---------------------------------
 🧪 API Endpoints (Backend)
 Method	Endpoint	Description
 POST	/api/auth/register	Register new user
@@ -171,23 +115,12 @@ B.Tech in Information Technology,
 Shri Govindrao Wanjari College of Engineering and Technology, Nagpur.
 MERN Stack Developer | JavaScript | Node.js | React.js
 
-📧 [your-email@example.com]
-💼 [LinkedIn Profile Link]
-🐙 [GitHub Profile Link]
+📧 vikashb4782@gmail.com
+💼 https://www.linkedin.com/in/vikash-bhagat-657517252?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
 
-⭐ Contributing
-Pull requests are welcome!
-For major changes, please open an issue first to discuss what you’d like to change.
-
+------------------------------------
 📄 License
 This project is open-source and available under the MIT License.
-
-yaml
-Copy code
-
----
-
-Would you like me to tailor this README with **your real email, LinkedIn, and GitHub links** before you upload it to GitHub?
 
 
 
