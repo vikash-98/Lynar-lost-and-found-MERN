@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import api from '../api/api';
-import { useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // optional eye icons
+import React, { useState } from "react";
+import api from "../api/api";
+import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // optional eye icons
 
 export default function Login() {
-  const [form, setForm] = useState({ email: '', password: '' });
+  const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false); // new state
   const navigate = useNavigate();
 
@@ -13,17 +13,18 @@ export default function Login() {
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.post('/auth/login', form);
+      const res = await api.post("/api/auth/login", form);
+
       const { token, user } = res.data;
 
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('userId', user.id || user._id);
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("userId", user.id || user._id);
 
-      navigate('/');
+      navigate("/");
     } catch (err) {
-      console.error('Login error:', err);
-      alert(err.response?.data?.msg || 'Error logging in');
+      console.error("Login error:", err);
+      alert(err.response?.data?.msg || "Error logging in");
     }
   };
 
@@ -43,7 +44,7 @@ export default function Login() {
         <div className="relative">
           <input
             name="password"
-            type={showPassword ? 'text' : 'password'} // toggle type
+            type={showPassword ? "text" : "password"} // toggle type
             placeholder="Password"
             value={form.password}
             onChange={handle}
@@ -58,23 +59,21 @@ export default function Login() {
           </span>
         </div>
 
-        
-<p className="text-right text-sm mt-1">
-  <a href="/forgot-password" className="text-blue-600 hover:underline">
-    Forgot Password?
-  </a>
-</p>
-   
-       
+        <p className="text-right text-sm mt-1">
+          <a href="/forgot-password" className="text-blue-600 hover:underline">
+            Forgot Password?
+          </a>
+        </p>
 
-        <button className="w-full bg-green-600 text-white p-2 rounded">Login</button>
-        <button 
-  onClick={() => window.location.href = '/register'}
-  className="w-full bg-gray-600 text-white p-2 rounded"
->
-  Create Account
-</button>
-
+        <button className="w-full bg-green-600 text-white p-2 rounded">
+          Login
+        </button>
+        <button
+          onClick={() => (window.location.href = "/register")}
+          className="w-full bg-gray-600 text-white p-2 rounded"
+        >
+          Create Account
+        </button>
       </form>
     </div>
   );
