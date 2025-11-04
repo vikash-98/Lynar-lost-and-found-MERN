@@ -12,8 +12,7 @@ It features secure authentication, image uploads, and a simple, intuitive interf
 **Database:** MongoDB Atlas  
 **Email Service:** Nodemailer (for password reset)  
 **Hosting:**  
-- Frontend → [Vercel](https://vercel.com)  
-- Backend → [Render](https://render.com)  
+ Link:- https://lynar-lost-and-found-mern.vercel.app/
 
 ---
 
