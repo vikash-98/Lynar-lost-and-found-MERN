@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
-import api from '../api/api';
-import { useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import React, { useState } from "react";
+import api from "../api/api";
+import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Register() {
-  const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -16,23 +21,24 @@ export default function Register() {
     e.preventDefault();
 
     if (form.password !== form.confirmPassword) {
-      setMessage('Passwords do not match');
+      setMessage("Passwords do not match");
       return;
     }
 
     try {
-      const res = await api.post('/auth/register', form);
-      console.log('Registration successful:', res.data);
+      const res = await api.post("/api/auth/register", form);
+
+      console.log("Registration successful:", res.data);
 
       // ✅ Show success message and redirect after short delay
-      setMessage('✅ Account created successfully! Please log in to continue.');
+      setMessage("✅ Account created successfully! Please log in to continue.");
 
       setTimeout(() => {
-        navigate('/login');
+        navigate("/login");
       }, 2000);
     } catch (err) {
       console.error(err.response?.data);
-      setMessage(err.response?.data?.msg || 'Error registering account');
+      setMessage(err.response?.data?.msg || "Error registering account");
     }
   };
 
@@ -44,7 +50,7 @@ export default function Register() {
       {message && (
         <p
           className={`mb-3 text-center font-medium ${
-            message.startsWith('✅') ? 'text-green-600' : 'text-red-600'
+            message.startsWith("✅") ? "text-green-600" : "text-red-600"
           }`}
         >
           {message}
@@ -74,7 +80,7 @@ export default function Register() {
         <div className="relative">
           <input
             name="password"
-            type={showPassword ? 'text' : 'password'}
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
             value={form.password}
             onChange={handle}
@@ -93,7 +99,7 @@ export default function Register() {
         <div className="relative">
           <input
             name="confirmPassword"
-            type={showConfirmPassword ? 'text' : 'password'}
+            type={showConfirmPassword ? "text" : "password"}
             placeholder="Confirm Password"
             value={form.confirmPassword}
             onChange={handle}
@@ -117,9 +123,9 @@ export default function Register() {
       </form>
 
       <p className="text-center text-sm mt-4">
-        Already have an account?{' '}
+        Already have an account?{" "}
         <span
-          onClick={() => navigate('/login')}
+          onClick={() => navigate("/login")}
           className="text-blue-600 cursor-pointer hover:underline"
         >
           Log in
