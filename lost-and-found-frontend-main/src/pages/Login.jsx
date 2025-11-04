@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import api from "../api/api";
 import { useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // optional eye icons
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
-  const [showPassword, setShowPassword] = useState(false); // new state
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const submit = async (e) => {
     e.preventDefault();
+
+    const { email, password } = form; // ✅ correctly extract from state
+
     try {
-      const { email, password } = form; // ✅ get values from state
       const res = await api.post("/api/auth/login", { email, password });
 
       const { token, user } = res.data;
@@ -45,7 +47,7 @@ export default function Login() {
         <div className="relative">
           <input
             name="password"
-            type={showPassword ? "text" : "password"} // toggle type
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
             value={form.password}
             onChange={handle}
@@ -66,11 +68,15 @@ export default function Login() {
           </a>
         </p>
 
-        <button className="w-full bg-green-600 text-white p-2 rounded">
+        <button
+          type="submit"
+          className="w-full bg-green-600 text-white p-2 rounded"
+        >
           Login
         </button>
         <button
-          onClick={() => (window.location.href = "/register")}
+          type="button"
+          onClick={() => navigate("/register")}
           className="w-full bg-gray-600 text-white p-2 rounded"
         >
           Create Account
